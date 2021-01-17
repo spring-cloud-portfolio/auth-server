@@ -1,0 +1,26 @@
+### Server ###
+server:
+  port: 9000
+
+### Spring ###
+spring:
+
+  ### Application ###
+  application:
+    name: auth-server
+
+  ### Profile ###
+  config:
+    activate:
+      on-profile: default
+
+### Eureka ###
+eureka:
+  client:
+    service-url:
+      defaultZone: "http://user:1111@localhost:8761/eureka/"
+
+### Logging ###
+logging:
+  level:
+    root: info
