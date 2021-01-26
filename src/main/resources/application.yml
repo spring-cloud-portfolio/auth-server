@@ -1,7 +1,3 @@
-### Server ###
-server:
-  port: 9000
-
 ### Spring ###
 spring:
 
@@ -9,18 +5,12 @@ spring:
   application:
     name: auth-server
 
-  ### Profile ###
+  ### Config ###
   config:
-    activate:
-      on-profile: default
+    import: configserver:http://localhost:9999
 
-### Eureka ###
-eureka:
-  client:
-    service-url:
-      defaultZone: "http://user:1111@localhost:8761/eureka/"
-
-### Logging ###
-logging:
-  level:
-    root: info
+  ### Cloud config ###
+  cloud:
+    config:
+      failFast: true
+      profile: default

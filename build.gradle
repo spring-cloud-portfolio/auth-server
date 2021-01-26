@@ -10,6 +10,13 @@ sourceCompatibility = '11'
 
 repositories {
     mavenCentral()
+    maven {
+        credentials {
+            username = findProperty('gitHubUsername') ?: System.getenv('GIT_HUB_USR')
+            password = findProperty('gitHubPassword') ?: System.getenv('GIT_HUB_PSW')
+        }
+        url "https://maven.pkg.github.com/spring-cloud-portfolio/core-lib-starter"
+    }
 }
 
 ext {
@@ -21,6 +28,8 @@ ext {
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.springframework.boot:spring-boot-starter-security')
+    implementation('org.springframework.cloud:spring-cloud-starter-config')
+    implementation('com.doroshenko.serhey.lib:core-lib-starter:0.0.1-SNAPSHOT')
     implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
     implementation("org.springframework.security.experimental:spring-security-oauth2-authorization-server:${authServerVersion}")
 }
@@ -34,7 +43,7 @@ dependencyManagement {
 bootBuildImage {
     publish = true
     cleanCache = false
-    environment = ["BP_JVM_VERSION"   : "15.*"]
+    environment = ["BP_JVM_VERSION": "15.*"]
     imageName = "cloudportfolio/${project.name}-${dockerImageProfile}"
     docker {
         publishRegistry {
