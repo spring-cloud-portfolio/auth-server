@@ -8,9 +8,3 @@ spring:
   ### Config ###
   config:
     import: configserver:http://localhost:9999
-
-  ### Cloud config ###
-  cloud:
-    config:
-      failFast: true
-      profile: default

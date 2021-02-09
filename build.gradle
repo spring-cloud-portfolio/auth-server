@@ -9,6 +9,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 repositories {
+    mavenLocal()
     mavenCentral()
     maven {
         credentials {
@@ -20,12 +21,13 @@ repositories {
 }
 
 ext {
-    set('authServerVersion', "0.0.3")
     set('springCloudVersion', "2020.0.0")
+    set('authServerVersion', "0.1.0-SNAPSHOT")
     set("dockerImageProfile", project.findProperty("dip") ?: 'default')
 }
 
 dependencies {
+    implementation('com.github.ben-manes.caffeine:caffeine')
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.springframework.boot:spring-boot-starter-security')
     implementation('org.springframework.cloud:spring-cloud-starter-config')
