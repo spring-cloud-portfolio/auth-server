@@ -9,7 +9,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 repositories {
-    mavenLocal()
+//    mavenLocal()
     mavenCentral()
     maven {
         credentials {
@@ -21,8 +21,8 @@ repositories {
 }
 
 ext {
+    set('authServerVersion', "0.1.0")
     set('springCloudVersion', "2020.0.0")
-    set('authServerVersion', "0.1.0-SNAPSHOT")
     set("dockerImageProfile", project.findProperty("dip") ?: 'default')
 }
 
