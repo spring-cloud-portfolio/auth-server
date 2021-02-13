@@ -7,7 +7,7 @@ ${AnsiColor.CYAN}
  ##.... ##:##:::: ##::: ##::::##:::: ##::::::::::::'##::: ##:##:::::::##::. ##::. ## ##:::##:::::::##::. ##::
  ##:::: ##. #######:::: ##::::##:::: ##::::::::::::. ######::########:##:::. ##::. ###::::########:##:::. ##:
 ..:::::..::.......:::::..::::..:::::..::::::::::::::......::........:..:::::..::::...::::........:..:::::..::
-${AnsiColor.DEFAULT}
-:: Auth server  ::                                                        :: ${application.formatted-version}
-:: Spring Boot  ::                                                        :: ${spring-boot.formatted-version}
-:: Developed by ::                                                        ::  (Serhey Doroshenko)
+${AnsiColor.YELLOW}
+:: Auth server  ::                                                                     ::${application.formatted-version}
+:: Spring Boot  ::                                                                     ::${spring-boot.formatted-version}
+:: Developed by ::                                                                     :: (Serhey Doroshenko)${AnsiColor.DEFAULT}
