@@ -4,9 +4,15 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
+version = '0.0.1'
 group = 'com.doroshenko.serhey'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+
+bootJar {
+    manifest {
+        attributes("Implementation-Title": project.name, "Implementation-Version": project.version)
+    }
+}
 
 repositories {
     mavenCentral()
