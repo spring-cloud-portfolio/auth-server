@@ -1,13 +1,14 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.4.3'
+    id 'org.springframework.boot' version '2.4.5'
+//    id 'org.springframework.experimental.aot' version '0.9.2'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
 version = '0.0.1'
 group = 'com.doroshenko.serhey'
 
-sourceCompatibility = '11'
+java { toolchain { languageVersion.set(JavaLanguageVersion.of(16)) } }
 
 bootJar {
     manifest {
@@ -17,18 +18,19 @@ bootJar {
 
 repositories {
     mavenCentral()
+    maven { url 'https://repo.spring.io/release' }
     maven {
+        url "https://maven.pkg.github.com/spring-cloud-portfolio/core-lib-starter"
         credentials {
             username = findProperty('gitHubUsername') ?: System.getenv('GIT_HUB_USR')
             password = findProperty('gitHubPassword') ?: System.getenv('GIT_HUB_PSW')
         }
-        url "https://maven.pkg.github.com/spring-cloud-portfolio/core-lib-starter"
     }
 }
 
 ext {
-    set('authServerVersion', "0.1.0")
-    set('springCloudVersion', "2020.0.1")
+    set('authServerVersion', "0.1.1")
+    set('springCloudVersion', "2020.0.2")
     set('coreLibVersion', "0.0.1-SNAPSHOT")
     set("dockerImageProfile", project.findProperty("dip") ?: 'default')
 }
@@ -54,7 +56,9 @@ dependencyManagement {
 bootBuildImage {
     publish = true
     cleanCache = false
-    environment = ["BP_JVM_VERSION": "15.*"]
+    environment = ["BP_JVM_VERSION": "16.*"]
+//    builder = "paketobuildpacks/builder:tiny"
+//    environment = ["BP_NATIVE_IMAGE": "true"]
     imageName = "cloudportfolio/${project.name}-${dockerImageProfile}"
     docker {
         publishRegistry {
